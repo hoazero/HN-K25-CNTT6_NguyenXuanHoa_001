@@ -217,7 +217,15 @@ where member_id IN (
 	)
 );
 
-
-
+-- cau 8
+select title, author, category
+from books 
+where category = 'Tiểu thuyết' and book_id IN (
+	select book_id
+	from loans
+	group by book_id
+	having count(book_id) >= 1
+);
+	
 
 
